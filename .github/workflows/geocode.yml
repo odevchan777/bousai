@@ -21,7 +21,7 @@ jobs:
         run: python geocode.py
 
       - name: Upload result
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: geocoded-csv
           path: master_with_coords.csv
