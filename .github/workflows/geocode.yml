@@ -1,11 +1,15 @@
-name: Get LatLon from Address
+name: Geocode Address Chunks
 
 on:
-  workflow_dispatch:  # 手動実行
+  workflow_dispatch:
 
 jobs:
   geocode:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        file: [010, 020, 030, 040, 050]
+
     steps:
       - uses: actions/checkout@v3
 
@@ -18,10 +22,11 @@ jobs:
         run: pip install pandas requests
 
       - name: Run geocoding script
-        run: python geocode.py
+        run: |
+          python geocode.py master${{ matrix.file }}.csv output${{ matrix.file }}.csv
 
       - name: Upload result
         uses: actions/upload-artifact@v4
         with:
-          name: geocoded-csv
-          path: master_with_coords.csv
+          name: geocoded-${{ matrix.file }}
+          path: output${{ matrix.file }}.csv
