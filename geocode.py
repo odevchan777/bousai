@@ -12,7 +12,7 @@ def clean_text(text):
 # -----------------------
 # CSV読み込み（文字化け対策に utf-8-sig）
 # -----------------------
-df = pd.read_csv("master001.csv", encoding="utf-8-sig")
+df = pd.read_csv("master002.csv", encoding="utf-8-sig")
 
 # 住所列作成（都道府県 + 市区郡 + 町村字）
 df["住所"] = df["都道府県漢字名"].apply(clean_text) + df["市区郡漢字名"].apply(clean_text) + df["町村字通称漢字名"].apply(clean_text)
