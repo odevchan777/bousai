@@ -24,7 +24,7 @@ for idx, row in df.iterrows():
             df.at[idx, "取得経度"] = lon
     except Exception as e:
         print(f"[ERROR] {query}: {e}")
-    time.sleep(0.5)
+    # time.sleep(0.5)
 
 # 🔽 書き出し時も utf-8-sig にする（Excelで文字化けしない）
 df.to_csv("master_with_coords.csv", index=False, encoding="utf-8-sig")
