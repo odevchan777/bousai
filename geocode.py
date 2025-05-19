@@ -9,7 +9,7 @@ outfile = sys.argv[2]
 def clean_text(text):
     return str(text).replace('　', '').replace(' ', '').strip()
 
-df = pd.read_csv(infile, encoding="cp932")
+df = pd.read_csv(infile, encoding="utf-8")
 df["住所"] = df["都道府県漢字名"].apply(clean_text) + df["市区郡漢字名"].apply(clean_text) + df["町村字通称漢字名"].apply(clean_text)
 df["取得緯度"] = None
 df["取得経度"] = None
@@ -28,4 +28,4 @@ for idx, row in df.iterrows():
         print(f"[ERROR] {query}: {e}")
     time.sleep(0.5)
 
-df.to_csv(outfile, index=False, encoding="cp932")
+df.to_csv(outfile, index=False, encoding="utf-8")
