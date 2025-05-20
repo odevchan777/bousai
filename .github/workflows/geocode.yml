@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        file: ["031", "032", "033"]
+        file: ["021", "022", "023"]
 
     steps:
       - uses: actions/checkout@v3
